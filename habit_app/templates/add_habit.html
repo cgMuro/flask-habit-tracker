@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container login-container">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <h3 class="text-center">{{ title }}</h3>
+                {{ super() }}
+                <div class="form-group">
+                    {{ form.activity.label(class="form-control-label") }}
+
+                    {% if form.activity.errors %}
+                        {{ form.activity(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for errors in form.activity.errors %}
+                                <span>{{ errors }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.activity(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.time_spent.label(class="form-control-label") }}
+
+                    {% if form.time_spent.errors %}
+                        {{ form.time_spent(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for errors in form.time_spent.errors %}
+                                <span>{{ errors }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.time_spent(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.description.label(class="form-control-label") }}
+
+                    {% if form.description.errors %}
+                        {{ form.description(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for errors in form.description.errors %}
+                                <span>{{ errors }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.description(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group text-center">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

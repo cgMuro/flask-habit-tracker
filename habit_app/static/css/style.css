@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+}
+
+#main-container {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    color: whitesmoke;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.login-container, .register-container {
+    padding: 5rem 20rem;
+}

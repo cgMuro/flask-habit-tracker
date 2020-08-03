@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2 class="text-center pt-4">Welcome <span style="font-weight: bold;">{{ current_user.name }}</span></h2>
+    {{ super() }}
+    <div class="container-fluid text-center mt-5 d-flex justify-content-around">
+        <a href="{{ url_for('habits.add_habit') }}" class="btn btn-outline-info">Add Activity</a>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+    <div class="container-fluid mx-auto">
+        {% if habits %}
+            <div class="container-fluid mx-auto">
+                <h2 class="text-center my-3">Your habits:</h2>
+                {% for habit in habits %}
+                    <div class="container-fluid row">
+                        <div class="col-10">
+                            <h6 class="">{{ habit.activity }}</h6>
+                            <p>Time spent: <span class="text-warning">{{ habit.time_spent }}</span> minutes</p>
+                            {% if habit.description%}
+                                <p>DESCRIPTION: {{ habit.description }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="col-2">
+                            <a href="{{ url_for('habits.update_habit', habit_id=habit.id) }}" class="btn btn-primary btn-sm my-2">Update Activity</a>
+                            <a href="{{ url_for('habits.delete_habit', habit_id=habit.id) }}" class="btn btn-danger btn-sm mt-2">Delete Activity</a>
+                        </div>
+                    </div>
+                    <hr class="border">
+                {% endfor %}
+            </div>
+        {% else %}
+            <h5 class="text-center mt-5 pt-5">You have no activities. Add them by clocking the button above.</h5>
+        {% endif %}
+    </div>
+{% endblock content %}
