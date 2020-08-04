@@ -1,3 +1,5 @@
 venv
 .vscode
 .DS_Store
+habit_app/__pycache__
+habit_app/database.db
