@@ -7,7 +7,7 @@ from flask_login import UserMixin
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-
+# User model
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"User: {self.name}, {self.email}"
 
-
+# Habit model
 class Habit(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     activity = db.Column(db.String(), nullable=False)

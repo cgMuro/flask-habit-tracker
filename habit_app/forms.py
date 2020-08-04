@@ -28,6 +28,7 @@ class RegistrationForm(FlaskForm):
     )
     submit = SubmitField('Sign Up')
 
+    # Check if email is already taken
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
